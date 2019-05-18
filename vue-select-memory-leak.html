@@ -1,0 +1,42 @@
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h3>
+      Memory leak when use select element
+    </h3>
+    <button @click="toggle">Toggle</button>
+    <div>
+      Selected option: {{v}}
+    </div>
+    <div v-if="show">
+      <select v-model="v">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+        <option>Option 4</option>
+      </select>
+      <!--
+      <input v-model="v" />
+      -->
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          v: 'Option 3',
+          show: true,
+        }
+      },
+      methods: {
+        toggle() {
+          this.show = !this.show;
+        }
+      }
+    })
+  </script>
+</body>
